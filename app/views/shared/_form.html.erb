@@ -1,0 +1,42 @@
+<% method = cat.persisted? ? "patch" : "post" %>
+<% action = cat.persisted? ? cat_url(cat.id) : cats_url%>
+
+<form class="" action= <%= action %> method="post">
+
+  <input type="hidden" name="_method" value= <%= method %>>
+  <section>
+    <label for="name">Name</label>
+    <input id="name" type="text" name="cat[name]" value = <%= cat.name %>>
+  </section>
+
+  <section>
+    <label for="sex">Sex</label>
+    <select id = "sex" name="cat[sex]">
+      <option <%= "selected" if cat.sex = "m" %> value="m">Male</option>
+      <option <%= "selected" if cat.sex = "f" %> value="f">Female</option>
+    </select>
+
+  </section>
+
+  <section>
+    <label for="description">Description</label>
+    <textarea id = "description" name = "cat[description]" rows="4" cols="50">
+      <%= cat.description %>
+    </textarea>
+  </section>
+
+  <section>
+    <label for="color">Color</label>
+    <select id="color" name="cat[color]" >
+      <%= options_for_select(%w{white brown black}, selected: cat.color) %>
+    </select>
+  </section>
+
+  <section>
+    <label for="birth_date">Birth Date</label>
+    <input id="birth_date" type="date" name="cat[birth_date]" value = <%= cat.birth_date %>>
+  </section>
+
+  <button>Submit</button>
+
+</form>

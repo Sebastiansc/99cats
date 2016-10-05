@@ -1,0 +1,58 @@
+<table>
+  <tr>
+    <th>
+      Description
+    </th>
+    <th>
+      Sex
+    </th>
+    <th>
+      Age
+    </th>
+    <th>
+      Color
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <%= @cat.description %>
+    </td>
+    <td>
+      <%= @cat.sex %>
+    </td>
+    <td>
+      <%= @cat.age %>
+    </td>
+    <td>
+      <%= @cat.color %>
+    </td>
+  </tr>
+</table>
+
+<% if @approved_rentals %>
+<table>
+  <tr>
+    <th>
+      Start Date
+    </th>
+    <th>
+      End Date
+    </th>
+  </tr>
+
+  <% @approved_rentals.each do |rental| %>
+  <tr>
+    <td>
+
+      <%= rental.start_date %>
+      <% if rental.status == "PENDING" %>
+        <%=button_to "Approve Rental", approve_cat_rental_url(rental) %>
+      <% end %>
+    </td>
+    <td>
+        <%= rental.end_date %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+<% end %>

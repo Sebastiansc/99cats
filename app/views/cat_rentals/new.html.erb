@@ -1,0 +1,14 @@
+<form action=<%= cat_rentals_url%> method="post">
+  <select class="" name= 'cat_rental[cat_id]'>
+    <% cats.each do |cat| %>
+    <option value= <%= cat.id %>>  <%= cat.name %></option>
+    <% end %>
+    </select>
+  <section>
+    <label for="start_date">Start Date</label>
+    <input id = "start_date" type="date" name="cat_rental[start_date]" value="">
+    <label for="end_date">End Date</label>
+    <input id = "end_date" type="date" name="cat_rental[end_date]" value="">
+  </section>
+  <button>Submit</button>
+</form>
